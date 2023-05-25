@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Menu</title>
+</head>
+
+<style>
+    *,::before,::after{
+        padding: 0;
+        margin: 0;
+        box-sizing: inherit;
+    }
+    html{
+        font-size: 62.5%;
+        box-sizing: border-box;
+    }
+    body{
+        background: #b813b2;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 20rem;
+        height: 20rem;
+    }
+    .toggle{
+        position: relative;
+        background-color: #fff;
+        width: 7rem;
+        height: 7rem;
+        border-radius: 100%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.5);
+        transition: .5s;
+        z-index: 100;
+    }
+    .toggle ion-icon{
+        font-size: 5rem !important;
+    }
+    .container.active .toggle{
+        transform: rotate(360deg);
+    }
+    .container ion-icon{
+        font-size: 2rem;
+    }
+    .container .item{
+        position: absolute;
+        width: 3.5rem;
+        height: 3.5rem;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transform-origin: 10rem;
+        left: 0;
+        transition: .3s;
+        transition-delay: calc(.1s * var(--i));
+        transform: rotate(0deg) translateX(10rem);
+    }
+    .container .item:hover{
+        color: rgb(251, 2, 118);
+    }
+    .container.active .item{
+        transform: rotate(calc(360deg / 9 * var(--i)));
+    }
+
+
+
+</style>
+
+<body>
+    
+    <div class="container">
+        <div class="toggle">
+            <ion-icon name="add-outline"></ion-icon>
+        </div>
+        <span class="item item-1" style="--i:0; --x:-1; --y:0">
+            <ion-icon name="moon-outline"></ion-icon>
+        </span>
+        <span class="item item-2" style="--i:1; --x:1; --y:0">
+            <ion-icon name="chatbubble-outline"></ion-icon>
+        </span>
+        <span class="item item-3" style="--i:2; --x:0; --y:-1">
+            <ion-icon name="time-outline"></ion-icon>
+        </span>
+        <span class="item item-4" style="--i:3; --x:0; --y:1">
+            <ion-icon name="camera-outline"></ion-icon>
+        </span>
+        <span class="item item-5" style="--i:4; --x:1; --y:1">
+            <ion-icon name="notifications-outline"></ion-icon>
+        </span>
+        <span class="item item-6" style="--i:5; --x:-1; --y:-1">
+            <ion-icon name="diamond-outline"></ion-icon>
+        </span>
+        <span class="item item-7" style="--i:6; --x:-1; --y:1">
+            <ion-icon name="water-outline"></ion-icon>
+        </span>
+        <span class="item item-8" style="--i:7; --x:1; --y:-1">
+            <ion-icon name="alarm-outline"></ion-icon>
+        </span>
+        <span class="item item-9" style="--i:8; --x:0; --y:0">
+            <ion-icon name="game-controller-outline"></ion-icon>
+        </span>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+    <script>
+        let toggle = document.querySelector('.toggle');
+        let container = document.querySelector('.container');
+
+        toggle.onclick = ()=>{
+            container.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
